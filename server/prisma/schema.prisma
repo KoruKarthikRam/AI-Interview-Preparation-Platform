@@ -1,0 +1,118 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// NOTE: For local development, we use SQLite for zero-config.
+// To switch to PostgreSQL for deployment, change the provider to "postgresql"
+// and set DATABASE_URL in your .env file to your PostgreSQL connection string.
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model User {
+  id                String             @id @default(uuid())
+  name              String
+  email             String             @unique
+  password          String
+  createdAt         DateTime           @default(now())
+  resumes           Resume[]
+  interviews        Interview[]
+  leetcodeSessions  LeetCodeSession[]
+  codingAssessments CodingAssessment[]
+  roadmaps          Roadmap[]
+}
+
+model Resume {
+  id            String   @id @default(uuid())
+  userId        String
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  fileName      String
+  fileUrl       String?
+  resumeText    String
+  skills        String   // JSON string of skills: string[]
+  missingSkills String   // JSON string of missing skills: string[]
+  strengths     String   // JSON string of strengths: string[]
+  weaknesses    String   // JSON string of weaknesses: string[]
+  createdAt     DateTime @default(now())
+}
+
+model Interview {
+  id         String     @id @default(uuid())
+  userId     String
+  user       User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title      String
+  role       String
+  difficulty String     // Easy, Medium, Hard
+  score      Float?     // Average score, calculated after interview completion
+  feedback   String?    // Overall feedback for the entire interview
+  createdAt  DateTime   @default(now())
+  questions  Question[]
+}
+
+model Question {
+  id           String    @id @default(uuid())
+  interviewId  String
+  interview    Interview @relation(fields: [interviewId], references: [id], onDelete: Cascade)
+  questionText String
+  type         String    // HR, Technical, Project, Behavioral
+  order        Int       // Order of the question (1 to 10)
+  answer       Answer?
+}
+
+model Answer {
+  id         String   @id @default(uuid())
+  questionId String   @unique
+  question   Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  answerText String
+  score      Int      // Grade from 1 to 10
+  feedback   String   // Gemini evaluation feedback
+  improvement String  // Gemini suggestions for improvement
+  createdAt  DateTime @default(now())
+}
+
+model LeetCodeSession {
+  id                 String   @id @default(uuid())
+  userId             String
+  user               User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  topics             String   // JSON string of selected topics: string[]
+  difficulty         String   // Easy, Medium, Hard
+  problemTitle       String
+  problemDescription String
+  userExplanation    String?
+  aiEvaluation       String?  // JSON string containing evaluation details
+  score              Int?
+  createdAt          DateTime @default(now())
+}
+
+model CodingAssessment {
+  id                 String   @id @default(uuid())
+  userId             String
+  user               User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  difficulty         String   // Easy, Medium, Hard
+  language           String   // Java, C++, Python, JavaScript
+  problemTitle       String
+  problemDescription String
+  starterCode        String
+  code               String?
+  timeComplexity     String?
+  spaceComplexity    String?
+  edgeCases          String?  // JSON string of edge cases feedback
+  codeQuality        String?  // JSON string of code quality feedback
+  score              Int?
+  feedback           String?
+  createdAt          DateTime @default(now())
+}
+
+model Roadmap {
+  id            String   @id @default(uuid())
+  userId        String
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  skills        String   // comma-separated or JSON list of skills
+  targetCompany String
+  roadmapData   String   // JSON representing weeks, topics, description, etc.
+  createdAt     DateTime @default(now())
+}
