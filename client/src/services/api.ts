@@ -243,6 +243,12 @@ export interface RoadmapData {
   createdAt: string;
 }
 
+export interface RoadmapResult {
+  title: string;
+  summary: string;
+  weeks: RoadmapWeekData[];
+}
+
 export const leetcodeService = {
   create: async (topics: string[], difficulty: string) => {
     return fetchAPI<LeetCodeSessionData>('/leetcode/session', {
