@@ -16,6 +16,31 @@ import {
 import DashboardLayout from '../../components/DashboardLayout';
 import { leetcodeService, LeetCodeSessionData } from '../../services/api';
 
+// LeetCode Logo SVG Icon
+const LeetCodeLogo = ({ className = "h-4 w-4" }: { className?: string }) => (
+  <svg
+    role="img"
+    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
+    className={className}
+    fill="currentColor"
+  >
+    <path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414 0-1.954l-2.36-2.36a.607.607 0 0 0-.859 0l-.942.942a.607.607 0 0 0 0 .859l.867.868c.57.57.57 1.503 0 2.073l-1.071 1.071a.607.607 0 0 1-.859 0L8.76 14.156a.607.607 0 0 1 0-.859l4.55-4.55a.607.607 0 0 1 .859 0l.942.942a.607.607 0 0 0 .859 0l2.36-2.36c.54-.54.54-1.414 0-1.954l-2.396-2.392a5.45 5.45 0 0 0-3.84-1.579zM10.15 13.91l-.942.942a.607.607 0 0 0 0 .859l2.36 2.36c.54.54 1.414.54 1.954 0l2.396-2.392a.607.607 0 0 0 0-.859l-2.36-2.36a.607.607 0 0 0-.859 0l-.942.942a.607.607 0 0 1-.859 0l-.867-.868c-.57-.57-.57-1.503 0-2.073l1.071-1.071a.607.607 0 0 0 0-.859L11.58 7.37a.607.607 0 0 0-.859 0l-4.55 4.55a.607.607 0 0 0 0 .859l.942.942a.607.607 0 0 1 0 .859l.867.868c.57.57 1.503.57 2.073 0l1.071-1.071a.607.607 0 0 0 0-.859z" />
+  </svg>
+);
+
+// Helper to convert problem title to LeetCode URL
+const getLeetCodeUrl = (title: string) => {
+  const cleanedTitle = title.replace(/^\d+[\s.-]+/, '');
+  const slug = cleanedTitle
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, '')
+    .trim()
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-');
+  return `https://leetcode.com/problems/${slug}/`;
+};
+
 export default function LeetCodeModePage() {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
@@ -263,6 +288,16 @@ export default function LeetCodeModePage() {
                           {sess.score ? `${sess.score}/10` : 'Ungraded'}
                         </span>
                       </div>
+
+                      <a
+                        href={getLeetCodeUrl(sess.problemTitle)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-2 border border-zinc-800 hover:border-zinc-700 bg-zinc-950/40 hover:bg-zinc-900 text-[#FFA116] hover:text-[#FFB84D] rounded-xl flex items-center justify-center transition-all cursor-pointer hover:scale-105 shrink-0"
+                        title="Solve on LeetCode"
+                      >
+                        <LeetCodeLogo className="h-5 w-5" />
+                      </a>
 
                       <Link
                         href={`/leetcode/${sess.id}`}
