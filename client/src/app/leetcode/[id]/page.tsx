@@ -96,8 +96,8 @@ export default function LeetCodeActiveSessionPage() {
       <DashboardLayout>
         <div className="flex h-[60vh] items-center justify-center">
           <div className="flex flex-col items-center gap-3">
-            <div className="h-8 w-8 animate-spin rounded-full border-4 border-indigo-500 border-t-transparent"></div>
-            <p className="text-zinc-400 text-sm">Loading problem statement...</p>
+            <div className="h-8 w-8 animate-spin rounded-full border-4 border-gold-500 border-t-transparent"></div>
+            <p className="text-gold-400 text-sm font-semibold tracking-wide animate-pulse">Loading problem statement...</p>
           </div>
         </div>
       </DashboardLayout>
@@ -107,11 +107,11 @@ export default function LeetCodeActiveSessionPage() {
   if (!session) {
     return (
       <DashboardLayout>
-        <div className="text-center py-12">
+        <div className="text-center py-12 z-10 relative">
           <AlertCircle className="h-10 w-10 text-rose-400 mx-auto mb-4" />
-          <h3 className="text-lg font-bold text-zinc-300">Session not found</h3>
-          <p className="text-sm text-zinc-500 mt-1">This LeetCode session could not be retrieved.</p>
-          <Link href="/leetcode" className="mt-4 inline-block px-4 py-2 bg-zinc-900 border border-zinc-800 text-xs font-semibold rounded-xl text-zinc-300 hover:bg-zinc-800">
+          <h3 className="text-lg font-serif font-bold text-gold-300">Session not found</h3>
+          <p className="text-xs text-gold-500 mt-1">This LeetCode session could not be retrieved.</p>
+          <Link href="/leetcode" className="mt-6 inline-block px-4 py-2 bg-gold-950/10 border border-gold-500/20 text-xs font-bold uppercase tracking-wider text-gold-300 rounded-xl hover:bg-gold-950/30">
             Back to LeetCode Dashboard
           </Link>
         </div>
@@ -145,7 +145,7 @@ export default function LeetCodeActiveSessionPage() {
         <div className="flex items-center justify-between">
           <Link
             href="/leetcode"
-            className="flex items-center gap-1.5 text-xs text-zinc-500 hover:text-zinc-300 font-semibold uppercase tracking-wider transition-colors cursor-pointer"
+            className="flex items-center gap-1.5 text-xs text-gold-500/70 hover:text-gold-200 font-bold uppercase tracking-wider transition-colors cursor-pointer"
           >
             <ArrowLeft className="h-4 w-4" />
             Back to LeetCode Mode
@@ -153,11 +153,11 @@ export default function LeetCodeActiveSessionPage() {
         </div>
 
         {/* Problem Header Banner */}
-        <div className="p-6 md:p-8 rounded-3xl border border-zinc-800/60 bg-gradient-to-br from-zinc-900/40 via-zinc-900/10 to-zinc-950/20 backdrop-blur-md relative overflow-hidden">
-          <div className="absolute top-0 right-0 -mr-24 -mt-24 w-48 h-48 bg-indigo-500/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="p-6 md:p-8 rounded-3xl border border-gold-500/10 bg-royal-card/80 backdrop-blur-md relative overflow-hidden">
+          <div className="absolute top-0 right-0 -mr-24 -mt-24 w-48 h-48 bg-royal-purple/5 rounded-full blur-3xl pointer-events-none" />
           
           <div className="flex flex-wrap items-center gap-3 mb-4">
-            <span className={`px-2.5 py-0.5 rounded-md text-[10px] font-bold border uppercase tracking-wider ${
+            <span className={`px-2.5 py-0.5 rounded-md text-[9px] font-bold border uppercase tracking-wider ${
               session.difficulty === 'Easy'
                 ? 'bg-emerald-500/5 text-emerald-400 border-emerald-500/10'
                 : session.difficulty === 'Medium'
@@ -168,7 +168,7 @@ export default function LeetCodeActiveSessionPage() {
             </span>
             <div className="flex gap-1.5">
               {topicsArr.map(t => (
-                <span key={t} className="px-2 py-0.5 rounded-md bg-zinc-950 border border-zinc-850 text-[10px] font-semibold text-zinc-400">
+                <span key={t} className="px-2 py-0.5 rounded-md bg-royal-bg border border-gold-500/10 text-[9px] font-bold text-gold-400/80">
                   {t}
                 </span>
               ))}
@@ -176,8 +176,8 @@ export default function LeetCodeActiveSessionPage() {
           </div>
           
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-            <h1 className="text-2xl md:text-3xl font-extrabold text-white flex items-center gap-3">
-              <Terminal className="h-6 w-6 text-indigo-400" />
+            <h1 className="text-2xl md:text-3xl font-extrabold font-serif text-gold-gradient flex items-center gap-3">
+              <Terminal className="h-6 w-6 text-gold-400" />
               {session.problemTitle}
             </h1>
             
@@ -185,7 +185,7 @@ export default function LeetCodeActiveSessionPage() {
               href={getLeetCodeUrl(session.problemTitle)}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2.5 text-xs font-bold bg-zinc-950/40 border border-zinc-800 hover:border-zinc-700 hover:bg-zinc-900/60 text-zinc-300 hover:text-white flex items-center gap-2.5 transition-all cursor-pointer group shrink-0 rounded-xl"
+              className="px-4 py-2.5 text-xs font-bold uppercase tracking-widest bg-royal-bg/40 border border-gold-500/15 hover:border-gold-500/35 hover:bg-royal-card/60 text-gold-300 hover:text-gold-100 flex items-center gap-2.5 transition-all cursor-pointer group shrink-0 rounded-xl"
               title="Open on LeetCode"
             >
               <LeetCodeLogo className="h-5 w-5 text-[#FFA116] group-hover:scale-110 transition-transform" />
@@ -195,7 +195,7 @@ export default function LeetCodeActiveSessionPage() {
         </div>
 
         {error && (
-          <div className="p-4 rounded-2xl bg-rose-500/5 border border-rose-500/10 flex items-center gap-3 text-rose-400 text-sm">
+          <div className="p-4 rounded-2xl bg-rose-950/20 border border-rose-900/30 flex items-center gap-3 text-rose-400 text-sm">
             <AlertCircle className="h-5 w-5" />
             {error}
           </div>
@@ -204,9 +204,9 @@ export default function LeetCodeActiveSessionPage() {
         {/* Split Screen Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Left Pane: Problem Description */}
-          <div className="p-6 md:p-8 rounded-3xl border border-zinc-800/40 bg-zinc-900/10 backdrop-blur-md space-y-6 overflow-y-auto max-h-[70vh]">
-            <h2 className="text-lg font-bold text-zinc-200 border-b border-zinc-900 pb-3">Problem Statement</h2>
-            <div className="text-zinc-300 text-sm font-medium leading-relaxed whitespace-pre-wrap select-text">
+          <div className="p-6 md:p-8 rounded-3xl border border-gold-500/10 bg-royal-card/50 backdrop-blur-md space-y-6 overflow-y-auto max-h-[70vh]">
+            <h2 className="text-lg font-serif font-bold text-gold-200 border-b border-gold-500/10 pb-3">Problem Statement</h2>
+            <div className="text-gold-100/80 text-sm font-medium leading-relaxed whitespace-pre-wrap select-text">
               {session.problemDescription}
             </div>
           </div>
@@ -215,10 +215,10 @@ export default function LeetCodeActiveSessionPage() {
           <div className="space-y-8">
             {!isGraded ? (
               // Stage: Input Explanation
-              <div className="p-6 md:p-8 rounded-3xl border border-zinc-800/40 bg-zinc-900/10 backdrop-blur-md space-y-6">
+              <div className="p-6 md:p-8 rounded-3xl border border-gold-500/10 bg-royal-card/50 backdrop-blur-md space-y-6">
                 <div>
-                  <h2 className="text-lg font-bold text-zinc-200">Explain Your Solution</h2>
-                  <p className="text-zinc-500 text-xs mt-1">
+                  <h2 className="text-lg font-serif font-bold text-gold-200">Explain Your Solution</h2>
+                  <p className="text-gold-500 text-xs mt-1 leading-relaxed">
                     Describe your algorithm in detail. Include your approach, what data structures you would use, why they fit, and the time and space complexity.
                   </p>
                 </div>
@@ -229,17 +229,17 @@ export default function LeetCodeActiveSessionPage() {
                     value={explanation}
                     onChange={(e) => setExplanation(e.target.value)}
                     placeholder="Example: I will use a Hash Map to store elements we have seen so far. As we iterate through the array, we check if target - current_value is already in the Hash Map. If it is, we return the pair..."
-                    className="w-full p-4 rounded-2xl border border-zinc-900 bg-zinc-950/60 hover:border-zinc-800 focus:border-indigo-500 text-zinc-200 placeholder-zinc-700 text-sm font-mono focus:outline-none transition-all leading-relaxed"
+                    className="w-full p-4 rounded-2xl border border-gold-500/10 bg-royal-bg/60 hover:border-gold-500/25 focus:border-gold-500/50 text-gold-100 placeholder-gold-500/20 text-sm font-mono focus:outline-none transition-all leading-relaxed"
                   />
 
                   <button
                     type="submit"
                     disabled={submitting}
-                    className="w-full flex items-center justify-center gap-2 py-3 bg-indigo-600 hover:bg-indigo-500 disabled:bg-indigo-700/50 disabled:cursor-not-allowed text-white text-sm font-bold rounded-xl transition-all"
+                    className="w-full flex items-center justify-center gap-2 py-4 bg-gold-gradient hover:opacity-90 disabled:opacity-50 text-black text-xs font-bold uppercase tracking-widest rounded-xl border border-gold-300/30 shadow-lg shadow-gold-500/10"
                   >
                     {submitting ? (
                       <>
-                        <div className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent"></div>
+                        <div className="h-4 w-4 animate-spin rounded-full border-2 border-black border-t-transparent"></div>
                         Interviewer evaluating approach...
                       </>
                     ) : (
@@ -250,11 +250,11 @@ export default function LeetCodeActiveSessionPage() {
               </div>
             ) : (
               // Stage: Evaluation Results
-              <div className="p-6 md:p-8 rounded-3xl border border-zinc-800/60 bg-zinc-900/10 backdrop-blur-md space-y-6">
-                <div className="flex items-center justify-between border-b border-zinc-900 pb-4">
+              <div className="p-6 md:p-8 rounded-3xl border border-gold-500/10 bg-royal-card/50 backdrop-blur-md space-y-6 shadow-sm">
+                <div className="flex items-center justify-between border-b border-gold-500/10 pb-4">
                   <div>
-                    <h2 className="text-lg font-bold text-zinc-200">AI Evaluation Report</h2>
-                    <p className="text-zinc-500 text-xs mt-0.5">Mock Coding Round feedback</p>
+                    <h2 className="text-lg font-serif font-bold text-gold-200">AI Evaluation Report</h2>
+                    <p className="text-gold-500 text-xs mt-0.5 font-medium uppercase tracking-wider">Mock Coding Round feedback</p>
                   </div>
                   
                   {/* Score badge */}
@@ -262,7 +262,7 @@ export default function LeetCodeActiveSessionPage() {
                     <Award className="h-5 w-5 shrink-0" />
                     <div>
                       <p className="text-[9px] uppercase tracking-wider font-bold leading-none">Score</p>
-                      <h3 className="text-2xl font-extrabold mt-1 leading-none">{session.score}<span className="text-xs font-semibold">/10</span></h3>
+                      <h3 className="text-2xl font-extrabold mt-1 leading-none font-serif">{session.score}<span className="text-xs font-semibold">/10</span></h3>
                     </div>
                   </div>
                 </div>
@@ -270,18 +270,18 @@ export default function LeetCodeActiveSessionPage() {
                 {/* Complexity Summary Cards */}
                 {evaluationData && (
                   <div className="grid grid-cols-2 gap-4">
-                    <div className="p-4 rounded-2xl border border-zinc-900 bg-zinc-950/40 flex items-center gap-3">
-                      <Clock className="h-5 w-5 text-indigo-400 shrink-0" />
+                    <div className="p-4 rounded-2xl border border-gold-500/10 bg-royal-bg/60 flex items-center gap-3">
+                      <Clock className="h-5 w-5 text-gold-450 shrink-0" />
                       <div>
-                        <p className="text-[10px] text-zinc-500 font-bold uppercase tracking-wider">Optimal Time</p>
-                        <p className="text-xs font-bold text-zinc-300 mt-0.5">{evaluationData.timeComplexityOptimal || 'O(N)'}</p>
+                        <p className="text-[9px] text-gold-500/50 font-bold uppercase tracking-widest">Optimal Time</p>
+                        <p className="text-xs font-bold text-gold-200 mt-0.5 font-mono">{evaluationData.timeComplexityOptimal || 'O(N)'}</p>
                       </div>
                     </div>
-                    <div className="p-4 rounded-2xl border border-zinc-900 bg-zinc-950/40 flex items-center gap-3">
-                      <ShieldCheck className="h-5 w-5 text-indigo-400 shrink-0" />
+                    <div className="p-4 rounded-2xl border border-gold-500/10 bg-royal-bg/60 flex items-center gap-3">
+                      <ShieldCheck className="h-5 w-5 text-gold-450 shrink-0" />
                       <div>
-                        <p className="text-[10px] text-zinc-500 font-bold uppercase tracking-wider">Optimal Space</p>
-                        <p className="text-xs font-bold text-zinc-300 mt-0.5">{evaluationData.spaceComplexityOptimal || 'O(N)'}</p>
+                        <p className="text-[9px] text-gold-500/50 font-bold uppercase tracking-widest">Optimal Space</p>
+                        <p className="text-xs font-bold text-gold-200 mt-0.5 font-mono">{evaluationData.spaceComplexityOptimal || 'O(N)'}</p>
                       </div>
                     </div>
                   </div>
@@ -291,47 +291,47 @@ export default function LeetCodeActiveSessionPage() {
                 {evaluationData && (
                   <div className="space-y-4">
                     <div className="space-y-1.5">
-                      <h4 className="text-xs font-bold text-zinc-300 flex items-center gap-1.5">
-                        <CheckCircle2 className="h-4 w-4 text-indigo-400" />
+                      <h4 className="text-xs font-bold text-gold-250/80 flex items-center gap-1.5 uppercase tracking-wider">
+                        <CheckCircle2 className="h-4 w-4 text-gold-400" />
                         Approach Analysis
                       </h4>
-                      <p className="text-xs text-zinc-400 leading-relaxed font-medium">
+                      <p className="text-xs text-gold-200/60 leading-relaxed font-light">
                         {evaluationData.feedback}
                       </p>
                     </div>
 
-                    <div className="space-y-1.5 border-t border-zinc-900 pt-3">
-                      <h4 className="text-xs font-bold text-zinc-300 flex items-center gap-1.5">
-                        <HelpCircle className="h-4 w-4 text-indigo-400" />
+                    <div className="space-y-1.5 border-t border-gold-500/10 pt-3">
+                      <h4 className="text-xs font-bold text-gold-250/80 flex items-center gap-1.5 uppercase tracking-wider">
+                        <HelpCircle className="h-4 w-4 text-gold-400" />
                         Correctness & Data Structures
                       </h4>
-                      <p className="text-xs text-zinc-400 leading-relaxed font-medium">
+                      <p className="text-xs text-gold-200/60 leading-relaxed font-light">
                         {evaluationData.correctnessDetails}
                       </p>
                     </div>
 
-                    <div className="space-y-1.5 border-t border-zinc-900 pt-3">
-                      <h4 className="text-xs font-bold text-indigo-400 flex items-center gap-1.5 animate-pulse">
-                        <Sparkles className="h-4 w-4 text-indigo-400" />
+                    <div className="space-y-1.5 border-t border-gold-500/10 pt-3">
+                      <h4 className="text-xs font-bold text-gold-400 flex items-center gap-1.5 uppercase tracking-wider animate-pulse">
+                        <Sparkles className="h-4 w-4 text-gold-400" />
                         Actionable Recommendations
                       </h4>
-                      <p className="text-xs text-zinc-400 leading-relaxed font-medium">
+                      <p className="text-xs text-gold-200/60 leading-relaxed font-light">
                         {evaluationData.improvement}
                       </p>
                     </div>
                   </div>
                 )}
 
-                <div className="border-t border-zinc-900 pt-4">
-                  <h4 className="text-[10px] text-zinc-500 font-bold uppercase tracking-wider mb-2">Your Explanation</h4>
-                  <div className="p-4 rounded-xl bg-zinc-950/60 border border-zinc-900 text-xs text-zinc-400 font-mono leading-relaxed select-text">
+                <div className="border-t border-gold-500/10 pt-4">
+                  <h4 className="text-[10px] text-gold-500/50 font-bold uppercase tracking-widest mb-2">Your Explanation</h4>
+                  <div className="p-4 rounded-xl bg-royal-bg/60 border border-gold-500/10 text-xs text-gold-200/50 font-mono leading-relaxed select-text">
                     {session.userExplanation}
                   </div>
                 </div>
 
                 <Link
                   href="/leetcode"
-                  className="w-full block text-center py-3 bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-zinc-300 text-sm font-semibold rounded-xl transition-all"
+                  className="w-full block text-center py-3 bg-gold-950/10 hover:bg-gold-950/20 border border-gold-500/15 hover:border-gold-500/35 text-gold-300 text-xs font-bold uppercase tracking-widest rounded-xl transition-all"
                 >
                   Configure Another Session
                 </Link>

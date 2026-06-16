@@ -54,8 +54,8 @@ export default function InterviewFeedbackPage() {
       <DashboardLayout>
         <div className="flex h-[60vh] items-center justify-center">
           <div className="flex flex-col items-center gap-3">
-            <div className="h-8 w-8 animate-spin rounded-full border-4 border-indigo-500 border-t-transparent"></div>
-            <p className="text-zinc-400 text-sm">Compiling your feedback report...</p>
+            <div className="h-8 w-8 animate-spin rounded-full border-4 border-gold-500 border-t-transparent"></div>
+            <p className="text-gold-400 text-sm font-semibold tracking-wide animate-pulse">Compiling your feedback report...</p>
           </div>
         </div>
       </DashboardLayout>
@@ -66,9 +66,9 @@ export default function InterviewFeedbackPage() {
     return (
       <DashboardLayout>
         <div className="text-center py-12">
-          <Info className="h-10 w-10 text-rose-400 mx-auto mb-4" />
-          <h3 className="text-lg font-bold text-zinc-300">Report not found</h3>
-          <p className="text-sm text-zinc-500 mt-1">This interview session feedback is unavailable.</p>
+          <Info className="h-10 w-10 text-rose-450 mx-auto mb-4" />
+          <h3 className="text-lg font-serif font-bold text-gold-300">Report not found</h3>
+          <p className="text-xs text-gold-500 mt-1">This interview session feedback is unavailable.</p>
         </div>
       </DashboardLayout>
     );
@@ -91,7 +91,7 @@ export default function InterviewFeedbackPage() {
         <div className="flex items-center gap-4">
           <Link
             href="/interview"
-            className="flex items-center gap-1.5 text-xs text-zinc-500 hover:text-zinc-300 font-semibold uppercase tracking-wider transition-colors cursor-pointer"
+            className="flex items-center gap-1.5 text-xs text-gold-500/70 hover:text-gold-200 font-bold uppercase tracking-wider transition-colors cursor-pointer"
           >
             <ArrowLeft className="h-4 w-4" />
             Back to mock list
@@ -99,12 +99,12 @@ export default function InterviewFeedbackPage() {
         </div>
 
         {/* Top Report summary banner */}
-        <div className="p-6 md:p-8 rounded-3xl border border-zinc-800/60 bg-gradient-to-br from-zinc-900/40 via-zinc-900/10 to-zinc-950/20 backdrop-blur-md flex flex-col md:flex-row md:items-center justify-between gap-8 relative overflow-hidden">
-          <div className="absolute top-0 right-0 -mr-24 -mt-24 w-48 h-48 bg-indigo-500/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="p-6 md:p-8 rounded-3xl border border-gold-500/10 bg-royal-card/85 backdrop-blur-md flex flex-col md:flex-row md:items-center justify-between gap-8 relative overflow-hidden shadow-sm">
+          <div className="absolute top-0 right-0 -mr-24 -mt-24 w-48 h-48 bg-royal-purple/5 rounded-full blur-3xl pointer-events-none" />
           
           <div className="space-y-4 max-w-2xl">
             <div className="flex flex-wrap items-center gap-3">
-              <span className={`px-2.5 py-0.5 rounded-md text-[10px] font-bold border uppercase tracking-wider ${
+              <span className={`px-2.5 py-0.5 rounded-md text-[9px] font-bold border uppercase tracking-wider ${
                 interview.difficulty === 'Easy'
                   ? 'bg-emerald-500/5 text-emerald-400 border-emerald-500/10'
                   : interview.difficulty === 'Medium'
@@ -113,25 +113,25 @@ export default function InterviewFeedbackPage() {
               }`}>
                 {interview.difficulty}
               </span>
-              <span className="text-xs text-zinc-500 flex items-center gap-1">
-                <Calendar className="h-3.5 w-3.5" />
+              <span className="text-xs text-gold-500/75 flex items-center gap-1 font-medium">
+                <Calendar className="h-3.5 w-3.5 text-gold-500/50" />
                 Completed {new Date(interview.createdAt).toLocaleDateString()}
               </span>
             </div>
             
-            <h1 className="text-2xl md:text-3xl font-extrabold text-zinc-100">{interview.title}</h1>
+            <h1 className="text-2xl md:text-3xl font-extrabold font-serif text-gold-gradient">{interview.title}</h1>
             
-            <p className="text-xs md:text-sm text-zinc-400 leading-relaxed font-medium">
+            <p className="text-xs md:text-sm text-gold-200/60 leading-relaxed font-light">
               {interview.feedback}
             </p>
           </div>
 
-          <div className="flex items-center gap-4 shrink-0 bg-zinc-950/40 border border-zinc-900 p-6 rounded-3xl min-w-[200px] justify-center">
-            <Award className="h-10 w-10 text-amber-400 shrink-0" />
+          <div className="flex items-center gap-4 shrink-0 bg-royal-bg border border-gold-500/15 p-6 rounded-3xl min-w-[200px] justify-center shadow-inner">
+            <Award className="h-10 w-10 text-gold-400 shrink-0" />
             <div>
-              <p className="text-[10px] text-zinc-500 font-bold uppercase tracking-wider leading-none">Overall Score</p>
-              <h2 className="text-4xl font-extrabold text-white mt-2 leading-none">
-                {interview.score}<span className="text-lg text-zinc-600 font-semibold">/10</span>
+              <p className="text-[9px] text-gold-500/50 font-bold uppercase tracking-widest leading-none">Overall Score</p>
+              <h2 className="text-4xl font-extrabold text-gold-100 mt-2 leading-none font-serif">
+                {interview.score}<span className="text-lg text-gold-550/40 font-semibold">/10</span>
               </h2>
             </div>
           </div>
@@ -141,7 +141,7 @@ export default function InterviewFeedbackPage() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Questions Sidebar (Left) */}
           <div className="lg:col-span-1 space-y-4">
-            <h3 className="font-bold text-zinc-300 text-sm">Question Index</h3>
+            <h3 className="font-serif font-bold text-gold-200 text-sm">Question Index</h3>
             
             <div className="space-y-2.5">
               {questions.map((q, idx) => {
@@ -153,22 +153,22 @@ export default function InterviewFeedbackPage() {
                     onClick={() => setSelectedIdx(idx)}
                     className={`w-full flex items-center justify-between p-4 rounded-2xl border transition-all text-left cursor-pointer ${
                       isSelected
-                        ? 'bg-indigo-600/10 border-indigo-500/40'
-                        : 'bg-zinc-950/40 border-zinc-900 hover:border-zinc-800 hover:bg-zinc-900/20'
+                        ? 'bg-gold-500/10 border-gold-500'
+                        : 'bg-royal-bg/60 border-gold-500/10 hover:border-gold-500/20 hover:bg-gold-950/10'
                     }`}
                   >
                     <div className="flex items-center gap-3 overflow-hidden">
-                      <span className={`h-6 w-6 rounded-lg text-[10px] font-bold flex items-center justify-center shrink-0 ${
-                        isSelected ? 'bg-indigo-600 text-white' : 'bg-zinc-900 text-zinc-500 border border-zinc-850'
+                      <span className={`h-6 w-6 rounded-lg text-[9px] font-bold flex items-center justify-center shrink-0 ${
+                        isSelected ? 'bg-gold-gradient text-black' : 'bg-royal-card text-gold-400/65 border border-gold-500/10'
                       }`}>
                         {idx + 1}
                       </span>
-                      <p className={`text-xs truncate font-medium ${isSelected ? 'text-zinc-200' : 'text-zinc-400'}`}>
+                      <p className={`text-xs truncate font-semibold ${isSelected ? 'text-gold-200' : 'text-gold-400/80'}`}>
                         {q.questionText}
                       </p>
                     </div>
 
-                    <span className={`px-2 py-0.5 rounded-md text-[10px] font-bold border shrink-0 ${getScoreColor(score)}`}>
+                    <span className={`px-2 py-0.5 rounded-md text-[9px] font-bold border shrink-0 ${getScoreColor(score)}`}>
                       {score}/10
                     </span>
                   </button>
@@ -180,9 +180,9 @@ export default function InterviewFeedbackPage() {
           {/* Details Inspector Pane (Right) */}
           <div className="lg:col-span-2">
             {selectedQuestion ? (
-              <div className="p-6 md:p-8 rounded-3xl border border-zinc-800/60 bg-zinc-900/10 backdrop-blur-md space-y-6 animate-fade-in">
+              <div className="p-6 md:p-8 rounded-3xl border border-gold-500/10 bg-royal-card/50 backdrop-blur-md space-y-6 animate-fade-in shadow-sm">
                 {/* Question Info */}
-                <div className="space-y-2 border-b border-zinc-900 pb-4">
+                <div className="space-y-2 border-b border-gold-500/10 pb-4">
                   <span className={`px-2.5 py-0.5 rounded-md text-[9px] font-bold border uppercase tracking-wider ${
                     selectedQuestion.type === 'Technical'
                       ? 'bg-blue-500/5 text-blue-400 border-blue-500/10'
@@ -194,19 +194,19 @@ export default function InterviewFeedbackPage() {
                   }`}>
                     {selectedQuestion.type} Focus
                   </span>
-                  <h3 className="text-lg font-bold text-zinc-100 leading-snug">
+                  <h3 className="text-lg font-bold font-serif text-gold-100 leading-snug">
                     {selectedQuestion.questionText}
                   </h3>
                 </div>
 
                 {/* Candidate Answer */}
                 <div className="space-y-2">
-                  <h4 className="text-xs font-semibold text-zinc-500 uppercase tracking-wider">Your Answer</h4>
-                  <div className="p-4 bg-zinc-950/60 border border-zinc-900 rounded-2xl text-xs md:text-sm text-zinc-400 leading-relaxed font-medium">
+                  <h4 className="text-[10px] font-bold text-gold-500/50 uppercase tracking-widest">Your Answer</h4>
+                  <div className="p-4 bg-royal-bg/60 border border-gold-500/10 rounded-2xl text-xs md:text-sm text-gold-200/70 leading-relaxed font-light font-sans whitespace-pre-wrap select-text">
                     {selectedQuestion.answer ? (
                       selectedQuestion.answer.answerText
                     ) : (
-                      <span className="italic text-zinc-600">No answer provided.</span>
+                      <span className="italic text-gold-500/30">No answer provided.</span>
                     )}
                   </div>
                 </div>
@@ -215,31 +215,31 @@ export default function InterviewFeedbackPage() {
                 {selectedQuestion.answer && (
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
                     {/* Score badge details */}
-                    <div className="md:col-span-1 p-5 rounded-2xl border border-zinc-900 bg-zinc-950/20 flex flex-col justify-center items-center text-center">
-                      <p className="text-[10px] text-zinc-500 font-bold uppercase tracking-wider leading-none">Question Score</p>
-                      <h3 className={`text-4xl font-extrabold mt-3 ${getScoreColor(selectedQuestion.answer.score).split(' ')[0]}`}>
-                        {selectedQuestion.answer.score}<span className="text-base text-zinc-600">/10</span>
+                    <div className="md:col-span-1 p-5 rounded-2xl border border-gold-500/10 bg-royal-bg/60 flex flex-col justify-center items-center text-center shadow-inner">
+                      <p className="text-[9px] text-gold-500/50 font-bold uppercase tracking-widest leading-none">Question Score</p>
+                      <h3 className={`text-4xl font-extrabold mt-3 font-serif ${getScoreColor(selectedQuestion.answer.score).split(' ')[0]}`}>
+                        {selectedQuestion.answer.score}<span className="text-base text-gold-550/40 font-semibold">/10</span>
                       </h3>
                     </div>
                     
                     {/* Gemini breakdown details */}
                     <div className="md:col-span-2 space-y-4">
                       <div className="space-y-1.5">
-                        <h4 className="text-xs font-bold text-zinc-300 flex items-center gap-1.5">
-                          <CheckCircle2 className="h-4 w-4 text-indigo-400" />
+                        <h4 className="text-xs font-bold text-gold-250/80 flex items-center gap-1.5 uppercase tracking-wider">
+                          <CheckCircle2 className="h-4 w-4 text-gold-400" />
                           AI Evaluator Feedback
                         </h4>
-                        <p className="text-xs text-zinc-400 leading-relaxed">
+                        <p className="text-xs text-gold-200/60 leading-relaxed font-light">
                           {selectedQuestion.answer.feedback}
                         </p>
                       </div>
                       
-                      <div className="space-y-1.5 border-t border-zinc-900 pt-3">
-                        <h4 className="text-xs font-bold text-indigo-400 flex items-center gap-1.5">
-                          <Sparkles className="h-4 w-4 text-indigo-400" />
+                      <div className="space-y-1.5 border-t border-gold-500/10 pt-3">
+                        <h4 className="text-xs font-bold text-gold-400 flex items-center gap-1.5 uppercase tracking-wider animate-pulse">
+                          <Sparkles className="h-4 w-4 text-gold-400" />
                           Actionable Improvement Tips
                         </h4>
-                        <p className="text-xs text-zinc-400 leading-relaxed">
+                        <p className="text-xs text-gold-200/60 leading-relaxed font-light">
                           {selectedQuestion.answer.improvement}
                         </p>
                       </div>
@@ -248,7 +248,7 @@ export default function InterviewFeedbackPage() {
                 )}
               </div>
             ) : (
-              <div className="h-full min-h-[300px] flex flex-col items-center justify-center text-center border border-zinc-800/40 rounded-3xl bg-zinc-900/10 text-zinc-500 text-xs">
+              <div className="h-full min-h-[300px] flex flex-col items-center justify-center text-center border border-gold-500/10 rounded-3xl bg-royal-card/10 text-gold-500/30 text-xs font-bold uppercase tracking-wider">
                 Select a question on the left to inspect evaluations.
               </div>
             )}

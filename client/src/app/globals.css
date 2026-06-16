@@ -1,22 +1,85 @@
 @import "tailwindcss";
 
 :root {
-  --background: #030712; /* slate-950 */
-  --foreground: #f8fafc; /* slate-50 */
+  --background: #030206; /* Midnight Obsidian */
+  --foreground: #fcfbfa; /* Warm Off-white */
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-outfit), sans-serif;
+  --font-serif: var(--font-cormorant), serif;
+  
+  /* Curated Gold Theme Palette */
+  --color-gold-50: #fdfbf7;
+  --color-gold-100: #fbf7eb;
+  --color-gold-200: #f5ecd0;
+  --color-gold-300: #ebdcb0;
+  --color-gold-400: #dcc280;
+  --color-gold-500: #c5a059;
+  --color-gold-600: #b38f4d;
+  --color-gold-700: #9a783b;
+  --color-gold-800: #7c5e2e;
+  --color-gold-900: #644b24;
+  --color-gold-950: #3b2c14;
+  
+  /* Royal Dark Colors */
+  --color-royal-bg: #030206;
+  --color-royal-card: #09070f;
+  --color-royal-purple: #581c87;
+  --color-royal-purple-light: #a855f7;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), sans-serif;
+  font-family: var(--font-outfit), sans-serif;
   overflow-x: hidden;
+}
+
+/* Custom premium scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #030206;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2c2419; /* dark gold track */
+  border-radius: 9px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #c5a059; /* gold thumb */
+}
+
+/* Custom premium utilities */
+@utility text-gold-gradient {
+  background-image: linear-gradient(135deg, #fdfbf7 0%, #ebdcb0 30%, #c5a059 70%, #9a783b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@utility bg-gold-gradient {
+  background-image: linear-gradient(135deg, #ebdcb0 0%, #c5a059 50%, #9a783b 100%);
+}
+
+@utility border-gold-glow {
+  border: 1px solid rgba(197, 160, 89, 0.2);
+  box-shadow: 0 0 15px rgba(197, 160, 89, 0.03);
+}
+
+@utility border-gold-glow-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  &:hover {
+    border-color: rgba(197, 160, 89, 0.45);
+    box-shadow: 0 0 25px rgba(197, 160, 89, 0.08);
+  }
 }
 
 /* Custom fade-in utility */
@@ -48,23 +111,3 @@ body {
     transform: translateY(-4px);
   }
 }
-
-/* Custom Scrollbar for dashboard screens */
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-
-::-webkit-scrollbar-track {
-  background: #09090b; /* zinc-950 */
-}
-
-::-webkit-scrollbar-thumb {
-  background: #27272a; /* zinc-800 */
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #3f3f46; /* zinc-700 */
-}
-

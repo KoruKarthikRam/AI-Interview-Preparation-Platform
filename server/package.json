@@ -8,7 +8,9 @@
     "build": "tsc",
     "start": "node dist/app.js",
     "prisma:generate": "prisma generate",
-    "prisma:migrate": "prisma migrate dev"
+    "prisma:migrate": "prisma migrate dev",
+    "prisma:use-postgres": "node prisma/use-postgres.js",
+    "prisma:use-sqlite": "node prisma/use-sqlite.js"
   },
   "dependencies": {
     "@google/generative-ai": "^0.21.0",

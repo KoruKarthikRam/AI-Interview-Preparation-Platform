@@ -101,8 +101,8 @@ export default function ResumePage() {
       <DashboardLayout>
         <div className="flex h-[60vh] items-center justify-center">
           <div className="flex flex-col items-center gap-3">
-            <div className="h-8 w-8 animate-spin rounded-full border-4 border-indigo-500 border-t-transparent"></div>
-            <p className="text-zinc-400 text-sm">Loading resume records...</p>
+            <div className="h-8 w-8 animate-spin rounded-full border-4 border-gold-500 border-t-transparent"></div>
+            <p className="text-gold-400 text-sm font-semibold tracking-wide animate-pulse">Loading resume records...</p>
           </div>
         </div>
       </DashboardLayout>
@@ -114,10 +114,10 @@ export default function ResumePage() {
       <div className="space-y-8 animate-fade-in">
         {/* Header */}
         <div>
-          <h1 className="text-3xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-zinc-400">
+          <h1 className="text-3xl font-extrabold tracking-wide font-serif text-gold-gradient">
             Resume Analyzer
           </h1>
-          <p className="text-zinc-400 text-sm mt-1">Upload your resume PDF to extract skills and evaluate ATS matching gaps.</p>
+          <p className="text-gold-200/50 text-xs mt-1 font-medium tracking-wide">Upload your resume PDF to extract skills and evaluate ATS matching gaps.</p>
         </div>
 
         {/* Upload Card */}
@@ -131,8 +131,8 @@ export default function ResumePage() {
               onClick={triggerFileInput}
               className={`p-8 rounded-3xl border-2 border-dashed flex flex-col items-center text-center justify-center cursor-pointer transition-all duration-300 min-h-[300px] ${
                 dragActive 
-                  ? 'border-indigo-500 bg-indigo-500/5 scale-[1.01]' 
-                  : 'border-zinc-800 bg-zinc-900/10 hover:border-zinc-700 hover:bg-zinc-900/20'
+                  ? 'border-gold-400 bg-gold-950/20 scale-[1.01]' 
+                  : 'border-gold-500/10 bg-royal-card/60 hover:border-gold-500/35 hover:bg-gold-950/5 shadow-sm shadow-gold-500/2'
               }`}
             >
               <input
@@ -144,21 +144,21 @@ export default function ResumePage() {
               />
               
               {uploading ? (
-                <div className="flex flex-col items-center gap-4">
-                  <Loader2 className="h-10 w-10 text-indigo-500 animate-spin" />
+                <div className="flex flex-col items-center gap-4 animate-pulse">
+                  <Loader2 className="h-10 w-10 text-gold-500 animate-spin" />
                   <div>
-                    <h4 className="font-bold text-zinc-200">Analyzing Resume...</h4>
-                    <p className="text-xs text-zinc-500 mt-1 max-w-[200px]">Gemini is parsing skills, projects, and finding missing gaps.</p>
+                    <h4 className="font-bold font-serif text-gold-200 text-sm">Analyzing Resume...</h4>
+                    <p className="text-[11px] text-gold-200/40 mt-1 max-w-[200px] font-medium">Gemini is parsing skills, projects, and finding missing gaps.</p>
                   </div>
                 </div>
               ) : (
                 <div className="flex flex-col items-center">
-                  <div className="p-4 bg-indigo-500/10 rounded-2xl text-indigo-400 mb-4">
+                  <div className="p-4 bg-gold-500/10 border border-gold-500/20 rounded-2xl text-gold-400 mb-4">
                     <Upload className="h-6 w-6" />
                   </div>
-                  <h4 className="font-bold text-zinc-200 text-sm">Drag & Drop Resume PDF</h4>
-                  <p className="text-xs text-zinc-500 mt-1.5 mb-4">or click to browse local files</p>
-                  <span className="px-3 py-1 bg-zinc-900 text-zinc-400 border border-zinc-800 rounded-lg text-[10px] uppercase font-semibold">
+                  <h4 className="font-bold font-serif text-gold-200 text-sm">Drag & Drop Resume PDF</h4>
+                  <p className="text-xs text-gold-200/40 mt-1.5 mb-4 font-medium">or click to browse local files</p>
+                  <span className="px-3 py-1 bg-gold-950/20 text-gold-400 border border-gold-500/20 rounded-lg text-[10px] uppercase font-bold tracking-wider">
                     PDF (Max 5MB)
                   </span>
                 </div>
@@ -166,18 +166,18 @@ export default function ResumePage() {
             </div>
 
             {error && (
-              <div className="p-4 bg-rose-500/10 border border-rose-500/20 rounded-2xl flex items-start gap-3 text-rose-400 text-xs">
+              <div className="p-4 bg-rose-950/20 border border-rose-500/25 rounded-2xl flex items-start gap-3 text-rose-400 text-xs animate-fade-in">
                 <AlertCircle className="h-5 w-5 shrink-0 mt-0.5" />
-                <p>{error}</p>
+                <p className="font-medium">{error}</p>
               </div>
             )}
 
-            <div className="p-5 bg-zinc-900/20 border border-zinc-800/40 rounded-3xl">
-              <div className="flex gap-3 text-zinc-400">
-                <Info className="h-5 w-5 text-indigo-400 shrink-0 mt-0.5" />
+            <div className="p-5 bg-royal-card/40 border border-gold-500/10 rounded-3xl shadow-sm shadow-gold-500/2">
+              <div className="flex gap-3 text-gold-200/60">
+                <Info className="h-5 w-5 text-gold-400 shrink-0 mt-0.5" />
                 <div className="text-xs space-y-2">
-                  <h4 className="font-bold text-zinc-300">Why upload your resume?</h4>
-                  <p className="leading-relaxed">
+                  <h4 className="font-bold font-serif text-gold-200 text-sm">Why upload your resume?</h4>
+                  <p className="leading-relaxed font-medium">
                     By parsing your resume text, our built-in Gemini engine will target specific questions about your real projects, database structures, and development frameworks.
                   </p>
                 </div>
@@ -186,31 +186,31 @@ export default function ResumePage() {
           </div>
 
           {/* Analysis View */}
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-2 animate-fade-in">
             {resumeData ? (
               <div className="space-y-6">
                 {/* Resume Header Info */}
-                <div className="p-6 rounded-3xl border border-zinc-800/40 bg-zinc-900/15 backdrop-blur-md flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                <div className="p-6 rounded-3xl border border-gold-500/10 bg-royal-card/60 backdrop-blur-md flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 shadow-sm shadow-gold-500/2">
                   <div className="flex items-center gap-3">
-                    <div className="p-2.5 bg-zinc-900 border border-zinc-800 rounded-xl text-indigo-400">
+                    <div className="p-2.5 bg-gold-950/20 border border-gold-500/20 rounded-xl text-gold-400">
                       <FileText className="h-5 w-5" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-zinc-200 text-sm leading-none">{resumeData.fileName}</h3>
-                      <p className="text-[11px] text-zinc-500 mt-1">Processed successfully</p>
+                      <h3 className="font-bold font-serif text-gold-200 text-sm leading-none">{resumeData.fileName}</h3>
+                      <p className="text-[11px] text-gold-500/50 mt-1 font-medium">Processed successfully</p>
                     </div>
                   </div>
-                  <div className="flex items-center gap-1.5 text-xs text-zinc-500">
-                    <Calendar className="h-4 w-4" />
+                  <div className="flex items-center gap-1.5 text-xs text-gold-400/60 font-medium">
+                    <Calendar className="h-4 w-4 text-gold-500/60" />
                     <span>Analyzed {new Date(resumeData.createdAt).toLocaleDateString()}</span>
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {/* Skills Found */}
-                  <div className="p-6 rounded-3xl border border-zinc-800/40 bg-zinc-900/15 backdrop-blur-md">
-                    <h3 className="font-bold text-zinc-200 text-sm mb-4 flex items-center gap-2">
-                      <span className="h-2 w-2 rounded-full bg-emerald-400"></span>
+                  <div className="p-6 rounded-3xl border border-gold-500/10 bg-royal-card/60 backdrop-blur-md shadow-sm shadow-gold-500/2">
+                    <h3 className="font-bold font-serif text-gold-200 text-sm mb-4 flex items-center gap-2">
+                      <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-sm shadow-emerald-400/50"></span>
                       Extracted Skills
                     </h3>
                     <div className="flex flex-wrap gap-2">
@@ -218,21 +218,21 @@ export default function ResumePage() {
                         resumeData.skills.map((skill: string) => (
                           <span 
                             key={skill} 
-                            className="px-3 py-1.5 bg-emerald-500/5 text-emerald-400 border border-emerald-500/10 rounded-xl text-xs font-semibold"
+                            className="px-3 py-1.5 bg-emerald-500/5 text-emerald-400 border border-emerald-500/10 rounded-xl text-xs font-bold tracking-wide transition-all hover:bg-emerald-500/10"
                           >
                             {skill}
                           </span>
                         ))
                       ) : (
-                        <p className="text-zinc-500 text-xs">No skills identified.</p>
+                        <p className="text-gold-200/40 text-xs font-medium">No skills identified.</p>
                       )}
                     </div>
                   </div>
 
                   {/* Missing Skills */}
-                  <div className="p-6 rounded-3xl border border-zinc-800/40 bg-zinc-900/15 backdrop-blur-md">
-                    <h3 className="font-bold text-zinc-200 text-sm mb-4 flex items-center gap-2">
-                      <span className="h-2 w-2 rounded-full bg-amber-400"></span>
+                  <div className="p-6 rounded-3xl border border-gold-500/10 bg-royal-card/60 backdrop-blur-md shadow-sm shadow-gold-500/2">
+                    <h3 className="font-bold font-serif text-gold-200 text-sm mb-4 flex items-center gap-2">
+                      <span className="h-2 w-2 rounded-full bg-gold-400 shadow-sm shadow-gold-400/50"></span>
                       Missing Skills (Gap Analysis)
                     </h3>
                     <div className="flex flex-wrap gap-2">
@@ -240,13 +240,13 @@ export default function ResumePage() {
                         resumeData.missingSkills.map((skill: string) => (
                           <span 
                             key={skill} 
-                            className="px-3 py-1.5 bg-amber-500/5 text-amber-400 border border-amber-500/10 rounded-xl text-xs font-semibold"
+                            className="px-3 py-1.5 bg-gold-500/5 text-gold-400 border border-gold-500/15 rounded-xl text-xs font-bold tracking-wide transition-all hover:bg-gold-500/10"
                           >
                             {skill}
                           </span>
                         ))
                       ) : (
-                        <p className="text-zinc-500 text-xs">Excellent coverage! No major gaps detected.</p>
+                        <p className="text-gold-200/40 text-xs font-medium">Excellent coverage! No major gaps detected.</p>
                       )}
                     </div>
                   </div>
@@ -255,15 +255,15 @@ export default function ResumePage() {
                 {/* Strengths & Weaknesses */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {/* Strengths */}
-                  <div className="p-6 rounded-3xl border border-zinc-800/40 bg-zinc-900/15 backdrop-blur-md space-y-4">
-                    <h3 className="font-bold text-zinc-200 text-sm flex items-center gap-2">
+                  <div className="p-6 rounded-3xl border border-gold-500/10 bg-royal-card/60 backdrop-blur-md space-y-4 shadow-sm shadow-gold-500/2">
+                    <h3 className="font-bold font-serif text-gold-200 text-sm flex items-center gap-2">
                       <CheckCircle className="h-5 w-5 text-emerald-400 shrink-0" />
                       Resume Strengths
                     </h3>
                     <ul className="space-y-3">
                       {resumeData.strengths.map((str: string, index: number) => (
-                        <li key={index} className="text-xs text-zinc-400 leading-relaxed flex items-start gap-2">
-                          <span className="mt-1.5 h-1 w-1 bg-emerald-400 rounded-full shrink-0"></span>
+                        <li key={index} className="text-xs text-gold-200/70 leading-relaxed flex items-start gap-2 font-medium">
+                          <span className="mt-1.5 h-1 w-1 bg-emerald-400 rounded-full shrink-0 shadow-sm shadow-emerald-400/50"></span>
                           {str}
                         </li>
                       ))}
@@ -271,15 +271,15 @@ export default function ResumePage() {
                   </div>
 
                   {/* Weaknesses */}
-                  <div className="p-6 rounded-3xl border border-zinc-800/40 bg-zinc-900/15 backdrop-blur-md space-y-4">
-                    <h3 className="font-bold text-zinc-200 text-sm flex items-center gap-2">
+                  <div className="p-6 rounded-3xl border border-gold-500/10 bg-royal-card/60 backdrop-blur-md space-y-4 shadow-sm shadow-gold-500/2">
+                    <h3 className="font-bold font-serif text-gold-200 text-sm flex items-center gap-2">
                       <XCircle className="h-5 w-5 text-rose-400 shrink-0" />
                       Areas for Improvement
                     </h3>
                     <ul className="space-y-3">
                       {resumeData.weaknesses.map((weak: string, index: number) => (
-                        <li key={index} className="text-xs text-zinc-400 leading-relaxed flex items-start gap-2">
-                          <span className="mt-1.5 h-1 w-1 bg-rose-400 rounded-full shrink-0"></span>
+                        <li key={index} className="text-xs text-gold-200/70 leading-relaxed flex items-start gap-2 font-medium">
+                          <span className="mt-1.5 h-1 w-1 bg-rose-400 rounded-full shrink-0 shadow-sm shadow-rose-400/50"></span>
                           {weak}
                         </li>
                       ))}
@@ -288,10 +288,10 @@ export default function ResumePage() {
                 </div>
               </div>
             ) : (
-              <div className="h-full min-h-[400px] flex flex-col items-center justify-center text-center p-8 border border-zinc-800/40 rounded-3xl bg-zinc-900/10">
-                <FileText className="h-12 w-12 text-zinc-700 mb-4" />
-                <h3 className="text-base font-bold text-zinc-400">No Resume Records Found</h3>
-                <p className="text-xs text-zinc-500 max-w-sm mt-1">
+              <div className="h-full min-h-[400px] flex flex-col items-center justify-center text-center p-8 border border-gold-500/10 rounded-3xl bg-royal-card/30 shadow-inner">
+                <FileText className="h-12 w-12 text-gold-500/20 mb-4" />
+                <h3 className="text-base font-bold font-serif text-gold-300">No Resume Records Found</h3>
+                <p className="text-xs text-gold-200/40 max-w-sm mt-1 font-medium">
                   Upload your professional resume PDF on the left to activate detailed skill profiles and custom AI question generation.
                 </p>
               </div>

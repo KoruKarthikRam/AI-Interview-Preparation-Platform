@@ -182,8 +182,8 @@ export default function MockInterviewPage() {
       <DashboardLayout>
         <div className="flex h-[60vh] items-center justify-center">
           <div className="flex flex-col items-center gap-3">
-            <div className="h-8 w-8 animate-spin rounded-full border-4 border-indigo-500 border-t-transparent"></div>
-            <p className="text-zinc-400 text-sm">Initializing interview simulator...</p>
+            <div className="h-8 w-8 animate-spin rounded-full border-4 border-gold-500 border-t-transparent"></div>
+            <p className="text-gold-400 text-sm font-semibold tracking-wide animate-pulse">Initializing interview simulator...</p>
           </div>
         </div>
       </DashboardLayout>
@@ -195,8 +195,8 @@ export default function MockInterviewPage() {
       <DashboardLayout>
         <div className="text-center py-12">
           <AlertCircle className="h-10 w-10 text-rose-400 mx-auto mb-4" />
-          <h3 className="text-lg font-bold text-zinc-300">No questions found</h3>
-          <p className="text-sm text-zinc-500 mt-1">This interview session doesn't contain questions.</p>
+          <h3 className="text-lg font-serif font-bold text-gold-300">No questions found</h3>
+          <p className="text-xs text-gold-500 mt-1">This interview session doesn't contain questions.</p>
         </div>
       </DashboardLayout>
     );
@@ -210,24 +210,24 @@ export default function MockInterviewPage() {
       <div className="space-y-6 max-w-4xl mx-auto animate-fade-in">
         {/* Progress bar */}
         <div className="space-y-2">
-          <div className="flex justify-between items-center text-xs text-zinc-500 font-semibold uppercase tracking-wider">
+          <div className="flex justify-between items-center text-[10px] text-gold-500/70 font-bold uppercase tracking-widest">
             <span>{interview?.title}</span>
             <span>Question {currentIdx + 1} of {questions.length}</span>
           </div>
-          <div className="h-2 w-full bg-zinc-900 rounded-full overflow-hidden border border-zinc-800/20">
+          <div className="h-2 w-full bg-royal-bg rounded-full overflow-hidden border border-gold-500/10">
             <div 
-              className="h-full bg-gradient-to-r from-indigo-500 to-violet-600 transition-all duration-300"
+              className="h-full bg-gold-gradient transition-all duration-300"
               style={{ width: `${((currentIdx + 1) / questions.length) * 100}%` }}
             />
           </div>
         </div>
 
         {/* Question Panel */}
-        <div className="p-6 md:p-8 rounded-3xl border border-zinc-800/60 bg-zinc-900/10 backdrop-blur-md space-y-4 relative overflow-hidden">
-          <div className="absolute top-0 right-0 -mr-16 -mt-16 w-36 h-36 bg-indigo-500/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="p-6 md:p-8 rounded-3xl border border-gold-500/10 bg-royal-card/50 backdrop-blur-md space-y-4 relative overflow-hidden shadow-sm">
+          <div className="absolute top-0 right-0 -mr-16 -mt-16 w-36 h-36 bg-royal-purple/5 rounded-full blur-3xl pointer-events-none" />
           
           <div className="flex items-center justify-between">
-            <span className={`px-2.5 py-0.5 rounded-md text-[10px] font-bold border uppercase tracking-wider ${
+            <span className={`px-2.5 py-0.5 rounded-md text-[9px] font-bold border uppercase tracking-wider ${
               currentQuestion.type === 'Technical'
                 ? 'bg-blue-500/5 text-blue-400 border-blue-500/10'
                 : currentQuestion.type === 'Project'
@@ -241,14 +241,14 @@ export default function MockInterviewPage() {
 
             {/* Timer Options & Status */}
             <div className="flex items-center gap-4">
-              <div className="flex bg-zinc-950/60 border border-zinc-800 rounded-xl p-0.5 text-[10px] font-semibold text-zinc-500">
+              <div className="flex bg-royal-bg/60 border border-gold-500/10 rounded-xl p-0.5 text-[9px] font-bold text-gold-500/70">
                 {[30, 60, 90].map((d) => (
                   <button
                     key={d}
                     type="button"
                     onClick={() => handleTimerDurationChange(d)}
                     className={`px-2 py-1 rounded-lg transition-colors cursor-pointer ${
-                      timerDuration === d ? 'bg-zinc-900 text-white border border-zinc-800' : 'hover:text-zinc-300'
+                      timerDuration === d ? 'bg-gold-500/10 border border-gold-500/10 text-gold-300 font-extrabold' : 'hover:text-gold-300'
                     }`}
                   >
                     {d}s
@@ -256,16 +256,16 @@ export default function MockInterviewPage() {
                 ))}
               </div>
 
-              <div className={`flex items-center gap-1.5 px-3 py-1 bg-zinc-950/60 border border-zinc-800 rounded-xl text-xs font-bold ${
-                timeLeft <= 10 && timeLeft > 0 ? 'text-rose-400 animate-pulse border-rose-500/20' : 'text-zinc-300'
+              <div className={`flex items-center gap-1.5 px-3 py-1 bg-royal-bg/60 border border-gold-500/10 rounded-xl text-xs font-bold ${
+                timeLeft <= 10 && timeLeft > 0 ? 'text-rose-450 animate-pulse border-rose-500/30' : 'text-gold-250'
               }`}>
-                <Timer className="h-4 w-4" />
+                <Timer className="h-4 w-4 text-gold-450" />
                 <span>{timeLeft > 0 ? `${timeLeft}s` : 'Time\'s Up'}</span>
               </div>
             </div>
           </div>
 
-          <h2 className="text-xl md:text-2xl font-bold leading-relaxed text-zinc-100">
+          <h2 className="text-xl md:text-2xl font-bold font-serif leading-relaxed text-gold-100">
             {currentQuestion.questionText}
           </h2>
         </div>
@@ -273,7 +273,7 @@ export default function MockInterviewPage() {
         {/* Answer Box */}
         <div className="space-y-4">
           <div className="flex justify-between items-center">
-            <label className="text-xs font-semibold text-zinc-500 uppercase tracking-wider">
+            <label className="text-[10px] font-bold text-gold-500/70 uppercase tracking-widest">
               Your Answer
             </label>
             <button
@@ -281,7 +281,7 @@ export default function MockInterviewPage() {
                 setAnswerText('');
                 resetTranscript();
               }}
-              className="flex items-center gap-1.5 text-xs text-zinc-500 hover:text-zinc-300 transition-colors cursor-pointer"
+              className="flex items-center gap-1.5 text-xs text-gold-500 hover:text-gold-300 transition-colors cursor-pointer font-bold"
             >
               <RotateCcw className="h-3.5 w-3.5" />
               Clear
@@ -298,22 +298,22 @@ export default function MockInterviewPage() {
                   : 'Type your answer details here, or click the mic button to answer by voice...'
               }
               rows={6}
-              className="block w-full px-5 py-4 bg-zinc-950/40 border border-zinc-800/80 rounded-3xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500/50 text-white placeholder-zinc-600 text-sm md:text-base leading-relaxed transition-all focus:outline-hidden resize-y min-h-[150px]"
+              className="block w-full px-5 py-4 bg-royal-bg/40 border border-gold-500/10 rounded-3xl focus:ring-1 focus:ring-gold-500 focus:border-gold-500/50 text-gold-100 placeholder-gold-500/20 text-sm md:text-base leading-relaxed transition-all focus:outline-hidden resize-y min-h-[150px] font-sans"
             />
 
             {/* Audio soundwave mock overlay when listening */}
             {isListening && (
               <div className="absolute inset-x-0 bottom-4 flex items-center justify-center pointer-events-none">
-                <div className="flex items-center gap-1 bg-indigo-950/90 border border-indigo-500/30 px-4 py-2 rounded-full shadow-lg backdrop-blur-md">
-                  <span className="text-[10px] text-indigo-400 font-bold tracking-wider uppercase animate-pulse mr-2">
+                <div className="flex items-center gap-1 bg-gold-950/90 border border-gold-500/30 px-4 py-2 rounded-full shadow-lg backdrop-blur-md">
+                  <span className="text-[9px] text-gold-300 font-bold tracking-wider uppercase animate-pulse mr-2">
                     Speech Capture Active
                   </span>
                   <div className="flex items-center gap-0.5 h-4">
-                    <span className="w-0.75 bg-indigo-400 rounded-full animate-bounce h-2" style={{ animationDelay: '0.1s' }} />
-                    <span className="w-0.75 bg-indigo-400 rounded-full animate-bounce h-4" style={{ animationDelay: '0.2s' }} />
-                    <span className="w-0.75 bg-indigo-400 rounded-full animate-bounce h-3" style={{ animationDelay: '0.3s' }} />
-                    <span className="w-0.75 bg-indigo-400 rounded-full animate-bounce h-1" style={{ animationDelay: '0.4s' }} />
-                    <span className="w-0.75 bg-indigo-400 rounded-full animate-bounce h-3.5" style={{ animationDelay: '0.5s' }} />
+                    <span className="w-0.75 bg-gold-400 rounded-full animate-bounce h-2" style={{ animationDelay: '0.1s' }} />
+                    <span className="w-0.75 bg-gold-400 rounded-full animate-bounce h-4" style={{ animationDelay: '0.2s' }} />
+                    <span className="w-0.75 bg-gold-400 rounded-full animate-bounce h-3" style={{ animationDelay: '0.3s' }} />
+                    <span className="w-0.75 bg-gold-400 rounded-full animate-bounce h-1" style={{ animationDelay: '0.4s' }} />
+                    <span className="w-0.75 bg-gold-400 rounded-full animate-bounce h-3.5" style={{ animationDelay: '0.5s' }} />
                   </div>
                 </div>
               </div>
@@ -327,10 +327,10 @@ export default function MockInterviewPage() {
                 <button
                   type="button"
                   onClick={handleMicToggle}
-                  className={`flex items-center gap-2 px-5 py-3 rounded-2xl text-sm font-semibold border transition-all cursor-pointer ${
+                  className={`flex items-center gap-2 px-5 py-3 rounded-2xl text-xs font-bold uppercase tracking-wider border transition-all cursor-pointer ${
                     isListening
-                      ? 'bg-rose-500/10 border-rose-500/30 text-rose-400 shadow-md shadow-rose-500/5'
-                      : 'bg-zinc-950 border-zinc-800 hover:bg-zinc-900 text-zinc-300'
+                      ? 'bg-rose-950/20 border-rose-900/30 text-rose-450 shadow-md shadow-rose-500/5'
+                      : 'bg-royal-bg border-gold-500/10 hover:bg-gold-950/15 text-gold-300'
                   }`}
                 >
                   {isListening ? (
@@ -340,13 +340,13 @@ export default function MockInterviewPage() {
                     </>
                   ) : (
                     <>
-                      <Mic className="h-4.5 w-4.5 text-indigo-400" />
+                      <Mic className="h-4.5 w-4.5 text-gold-400" />
                       Answer by Voice
                     </>
                   )}
                 </button>
               ) : (
-                <span className="text-xs text-zinc-600 font-semibold uppercase tracking-wider flex items-center gap-1.5 p-2 border border-zinc-900 rounded-xl">
+                <span className="text-[10px] text-gold-500/50 font-bold uppercase tracking-widest flex items-center gap-1.5 p-2 border border-gold-500/10 rounded-xl bg-royal-bg/40">
                   <MicOff className="h-4 w-4" />
                   Voice inputs unsupported
                 </span>
@@ -355,7 +355,7 @@ export default function MockInterviewPage() {
 
             <div className="flex gap-3 justify-end">
               {/* Question pagination jump (only if they have answers already saved) */}
-              <div className="flex items-center gap-1 bg-zinc-950/40 border border-zinc-900 rounded-2xl p-1 text-xs">
+              <div className="flex items-center gap-1 bg-royal-bg/40 border border-gold-500/10 rounded-2xl p-1 text-xs">
                 {questions.map((q, idx) => (
                   <button
                     key={q.id}
@@ -368,10 +368,10 @@ export default function MockInterviewPage() {
                     disabled={!q.answer && idx !== currentIdx}
                     className={`h-7 w-7 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                       currentIdx === idx
-                        ? 'bg-indigo-600 text-white font-black'
+                        ? 'bg-gold-gradient text-black font-black'
                         : q.answer
-                        ? 'bg-zinc-900 text-emerald-400 border border-emerald-500/10'
-                        : 'text-zinc-600'
+                        ? 'bg-royal-card text-emerald-400 border border-emerald-500/10'
+                        : 'text-gold-500/30'
                     }`}
                   >
                     {idx + 1}
@@ -384,7 +384,7 @@ export default function MockInterviewPage() {
                 type="button"
                 onClick={handleAnswerSubmit}
                 disabled={submittingAnswer || !answerText.trim()}
-                className="flex items-center gap-2 py-3 px-6 rounded-2xl text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 disabled:hover:scale-100 transition-all hover:scale-[1.01] cursor-pointer"
+                className="flex items-center gap-2 py-3.5 px-6 rounded-2xl text-xs font-bold uppercase tracking-widest text-black bg-gold-gradient border border-gold-300/30 disabled:opacity-50 disabled:hover:scale-100 transition-all hover:scale-[1.01] cursor-pointer"
               >
                 {submittingAnswer ? (
                   <>
@@ -402,37 +402,37 @@ export default function MockInterviewPage() {
           </div>
 
           {error && (
-            <div className="p-4 bg-rose-500/10 border border-rose-500/20 rounded-2xl flex items-start gap-3 text-rose-400 text-xs mt-4">
+            <div className="p-4 bg-rose-950/20 border border-rose-900/30 rounded-2xl flex items-start gap-3 text-rose-450 text-xs mt-4">
               <AlertCircle className="h-5 w-5 shrink-0 mt-0.5" />
-              <p>{error}</p>
+              <p className="font-semibold">{error}</p>
             </div>
           )}
         </div>
 
         {/* Complete Trigger Panel */}
         {allAnswered && (
-          <div className="p-6 rounded-3xl border border-emerald-500/15 bg-emerald-500/5 backdrop-blur-md flex flex-col md:flex-row items-center justify-between gap-4 mt-8 animate-bounce-subtle">
+          <div className="p-6 rounded-3xl border border-gold-500/20 bg-gold-950/10 backdrop-blur-md flex flex-col md:flex-row items-center justify-between gap-4 mt-8 animate-bounce-subtle">
             <div className="flex items-center gap-3">
-              <Sparkles className="h-6 w-6 text-emerald-400" />
+              <Sparkles className="h-6 w-6 text-gold-400" />
               <div>
-                <h4 className="font-bold text-emerald-400 text-sm">All 10 Answers Completed!</h4>
-                <p className="text-xs text-zinc-500 mt-0.5">Submit to Gemini to compile your report card feedback metrics.</p>
+                <h4 className="font-bold text-gold-300 font-serif text-sm">All 10 Answers Completed!</h4>
+                <p className="text-xs text-gold-200/50 mt-0.5 leading-relaxed font-light">Submit to Gemini to compile your report card feedback metrics.</p>
               </div>
             </div>
             <button
               onClick={handleCompleteInterview}
               disabled={completing}
-              className="flex items-center gap-2 px-6 py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-2xl shadow-lg shadow-emerald-600/10 transition-all hover:scale-[1.02] cursor-pointer w-full md:w-auto justify-center"
+              className="flex items-center gap-2 px-6 py-3.5 bg-gold-gradient text-black font-bold border border-gold-300/30 text-xs uppercase tracking-widest rounded-2xl shadow-lg shadow-gold-500/10 transition-all hover:scale-[1.02] cursor-pointer w-full md:w-auto justify-center"
             >
               {completing ? (
                 <>
-                  <Loader2 className="h-4.5 w-4.5 animate-spin" />
+                  <Loader2 className="h-4.5 w-4.5 animate-spin text-black" />
                   Completing...
                 </>
               ) : (
                 <>
                   Generate Report Card
-                  <ArrowRight className="h-4.5 w-4.5" />
+                  <ArrowRight className="h-4.5 w-4.5 text-black" />
                 </>
               )}
             </button>
