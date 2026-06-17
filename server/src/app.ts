@@ -24,7 +24,24 @@ const allowedOrigins = process.env.CLIENT_URL
 
 app.use(
   cors({
-    origin: allowedOrigins,
+    origin: (origin, callback) => {
+      // Allow requests with no origin (like mobile apps or curl)
+      if (!origin) {
+        callback(null, true);
+        return;
+      }
+      
+      const isAllowed = allowedOrigins.includes(origin) || 
+        origin === 'http://localhost:3000' || 
+        origin === 'http://127.0.0.1:3000' ||
+        /^https:\/\/ai-interview-preparation-platform[a-zA-Z0-9-]*\.vercel\.app$/.test(origin);
+      
+      if (isAllowed) {
+        callback(null, true);
+      } else {
+        callback(null, false);
+      }
+    },
     credentials: true,
   })
 );
