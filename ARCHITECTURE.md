@@ -67,7 +67,7 @@ The database keeps track of user growth, test submissions, scoring histories, an
 The intelligence of the platform is powered entirely by Google's state-of-the-art Gemini LLM.
 
 ### Model & Configuration
-* **AI Model:** `gemini-1.5-flash`
+* **AI Model:** `gemini-2.5-flash`
 * **SDK:** `@google/generative-ai`
 * **API Pattern (Structured JSON Outputs):**
   * Configured with `generationConfig: { responseMimeType: 'application/json' }`.
